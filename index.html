@@ -1,0 +1,534 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Website edukasi tentang isu lingkungan, pencemaran, sampah plastik, dan cara menjaga bumi.">
+<title>EcoCare - Peduli Lingkungan</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --green: #167447;
+    --dark: #123d2a;
+    --light: #edf7ef;
+    --text: #26382d;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: var(--text);
+    line-height: 1.7;
+    background: #fff;
+}
+
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: white;
+    padding: 16px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px #00000010;
+}
+
+.logo {
+    font-size: 23px;
+    font-weight: bold;
+    color: var(--green);
+}
+
+nav a {
+    color: var(--text);
+    text-decoration: none;
+    margin-left: 18px;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: var(--green);
+}
+
+.hero {
+    min-height: 510px;
+    padding: 90px 8%;
+    display: flex;
+    align-items: center;
+    color: white;
+    background:
+      linear-gradient(90deg, #103b2ce8, #103b2c40),
+      url("https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1800&q=85")
+      center/cover;
+}
+
+.hero-content {
+    max-width: 680px;
+}
+
+.tag {
+    display: inline-block;
+    padding: 6px 14px;
+    background: #ffffff25;
+    border: 1px solid #ffffff60;
+    border-radius: 30px;
+    margin-bottom: 18px;
+}
+
+.hero h1 {
+    font-size: clamp(38px, 6vw, 65px);
+    line-height: 1.12;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 17px;
+    max-width: 560px;
+    margin-bottom: 28px;
+}
+
+.btn {
+    display: inline-block;
+    background: #9ee6a8;
+    color: #143c28;
+    padding: 13px 22px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: white;
+}
+
+section {
+    padding: 75px 8%;
+    scroll-margin-top: 70px;
+}
+
+.section-title {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 38px;
+}
+
+.section-title h2 {
+    font-size: 34px;
+    color: var(--dark);
+    margin-bottom: 10px;
+}
+
+.section-title p {
+    color: #68786d;
+}
+
+.about {
+    background: var(--light);
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.card {
+    border: 1px solid #e2ebe3;
+    border-radius: 15px;
+    overflow: hidden;
+    background: white;
+    transition: transform .2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card img {
+    width: 100%;
+    height: 195px;
+    object-fit: cover;
+    display: block;
+}
+
+.card-content {
+    padding: 22px;
+}
+
+.card h3 {
+    color: var(--green);
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 14px;
+    color: #59675d;
+}
+
+.pill {
+    display: inline-block;
+    font-size: 12px;
+    background: var(--light);
+    color: var(--green);
+    border-radius: 20px;
+    padding: 4px 10px;
+    margin-bottom: 10px;
+}
+
+.impact {
+    background: var(--dark);
+    color: white;
+    text-align: center;
+}
+
+.impact h2 {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.impact p {
+    max-width: 760px;
+    margin: auto;
+    color: #dcebe0;
+}
+
+.actions {
+    background: #f7faf7;
+}
+
+.action-list {
+    max-width: 780px;
+    margin: auto;
+    display: grid;
+    gap: 15px;
+}
+
+.action {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    display: flex;
+    gap: 16px;
+    border: 1px solid #e3ebe4;
+}
+
+.action .emoji {
+    font-size: 29px;
+}
+
+.action h3 {
+    color: var(--green);
+    margin-bottom: 4px;
+}
+
+.quiz {
+    max-width: 650px;
+    margin: auto;
+    background: var(--light);
+    padding: 28px;
+    border-radius: 16px;
+}
+
+.quiz h3 {
+    margin-bottom: 15px;
+}
+
+.quiz button.option {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 13px;
+    margin: 10px 0;
+    border: 1px solid #d0e0d3;
+    border-radius: 8px;
+    background: white;
+    cursor: pointer;
+    color: var(--text);
+}
+
+.quiz button.option:hover {
+    border-color: var(--green);
+    background: #e0f3e3;
+}
+
+#hasil {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+footer {
+    background: #102f22;
+    color: #dcebe0;
+    text-align: center;
+    padding: 30px 15px;
+}
+
+footer strong {
+    color: #9ee6a8;
+}
+
+@media (max-width: 760px) {
+    nav {
+        padding: 14px 5%;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    nav a {
+        margin-left: 0;
+        margin-right: 12px;
+    }
+
+    nav .links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .hero {
+        padding: 75px 7%;
+        min-height: 460px;
+    }
+
+    section {
+        padding: 55px 6%;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .section-title h2 {
+        font-size: 28px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">🌿 EcoCare</div>
+    <div class="links">
+        <a href="#beranda">Beranda</a>
+        <a href="#isu">Isu Lingkungan</a>
+        <a href="#solusi">Solusi</a>
+        <a href="#kuis">Kuis</a>
+    </div>
+</nav>
+
+<header class="hero" id="beranda">
+    <div class="hero-content">
+        <span class="tag">🌍 Gerakan Peduli Bumi</span>
+        <h1>Selamatkan Bumi, Mulai dari Diri Sendiri</h1>
+        <p>
+            Kenali permasalahan lingkungan di sekitar kita dan
+            lakukan langkah sederhana untuk menciptakan bumi
+            yang lebih bersih, sehat, dan lestari.
+        </p>
+        <a href="#isu" class="btn">Jelajahi Isu Lingkungan ↓</a>
+    </div>
+</header>
+
+<section class="about">
+    <div class="section-title">
+        <h2>Mengapa Lingkungan Penting?</h2>
+        <p>
+            Lingkungan menyediakan udara, air, makanan, dan
+            tempat tinggal bagi seluruh makhluk hidup. Menjaganya
+            merupakan tanggung jawab kita bersama.
+        </p>
+    </div>
+</section>
+
+<section id="isu">
+    <div class="section-title">
+        <h2>Permasalahan Isu Lingkungan</h2>
+        <p>
+            Berikut beberapa masalah lingkungan yang perlu
+            kita ketahui dan tangani bersama.
+        </p>
+    </div>
+
+    <div class="cards">
+        <article class="card">
+            <img
+              src="https://images.unsplash.com/photo-1611284446314-60a58ac0deb9?auto=format&fit=crop&w=800&q=80"
+              alt="Sampah plastik yang mencemari lingkungan"
+              loading="lazy">
+            <div class="card-content">
+                <span class="pill">Sampah</span>
+                <h3>Sampah Plastik</h3>
+                <p>
+                    Plastik yang dibuang sembarangan dapat mencemari
+                    tanah dan perairan serta membahayakan satwa.
+                    Penggunaan plastik sekali pakai memperbesar
+                    jumlah sampah.
+                </p>
+            </div>
+        </article>
+
+        <article class="card">
+            <img
+              src="https://images.unsplash.com/photo-1532601224476-15c79f2f7a51?auto=format&fit=crop&w=800&q=80"
+              alt="Pencemaran udara dan lingkungan"
+              loading="lazy">
+            <div class="card-content">
+                <span class="pill">Udara</span>
+                <h3>Pencemaran Udara</h3>
+                <p>
+                    Asap kendaraan, industri, dan pembakaran
+                    sampah dapat menurunkan kualitas udara serta
+                    meningkatkan risiko gangguan kesehatan.
+                </p>
+            </div>
+        </article>
+
+        <article class="card">
+            <img
+              src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80"
+              alt="Hutan dan pepohonan"
+              loading="lazy">
+            <div class="card-content">
+                <span class="pill">Hutan</span>
+                <h3>Penebangan Hutan</h3>
+                <p>
+                    Hilangnya hutan dapat merusak habitat satwa,
+                    mengurangi keanekaragaman hayati, dan
+                    meningkatkan risiko erosi serta banjir.
+                </p>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section class="impact">
+    <h2>Dampak Kerusakan Lingkungan</h2>
+    <p>
+        Kerusakan lingkungan dapat menyebabkan banjir, tanah longsor,
+        hilangnya habitat hewan, berkurangnya kualitas air bersih,
+        serta memperburuk perubahan iklim. Dampaknya dirasakan oleh
+        manusia dan seluruh makhluk hidup.
+    </p>
+</section>
+
+<section class="actions" id="solusi">
+    <div class="section-title">
+        <h2>Apa yang Bisa Kita Lakukan?</h2>
+        <p>
+            Perubahan besar dapat dimulai dari kebiasaan kecil
+            yang dilakukan secara konsisten.
+        </p>
+    </div>
+
+    <div class="action-list">
+        <div class="action">
+            <div class="emoji">♻️</div>
+            <div>
+                <h3>Kurangi Sampah Plastik</h3>
+                <p>Bawa botol minum dan tas belanja yang dapat digunakan kembali.</p>
+            </div>
+        </div>
+
+        <div class="action">
+            <div class="emoji">🌳</div>
+            <div>
+                <h3>Jaga dan Tanam Pohon</h3>
+                <p>Rawat tanaman dan dukung pelestarian hutan di sekitar kita.</p>
+            </div>
+        </div>
+
+        <div class="action">
+            <div class="emoji">💧</div>
+            <div>
+                <h3>Hemat Air</h3>
+                <p>Gunakan air secukupnya dan perbaiki kebocoran jika ditemukan.</p>
+            </div>
+        </div>
+
+        <div class="action">
+            <div class="emoji">🗑️</div>
+            <div>
+                <h3>Pilah Sampah</h3>
+                <p>Pisahkan sampah organik, anorganik, dan sampah yang perlu penanganan khusus.</p>
+            </div>
+        </div>
+
+        <div class="action">
+            <div class="emoji">🚲</div>
+            <div>
+                <h3>Kurangi Polusi</h3>
+                <p>Berjalan kaki, bersepeda, atau gunakan transportasi umum jika memungkinkan.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="kuis">
+    <div class="section-title">
+        <h2>🌱 Kuis Peduli Lingkungan</h2>
+        <p>Uji pengetahuanmu melalui pertanyaan singkat berikut!</p>
+    </div>
+
+    <div class="quiz">
+        <h3>Apa tindakan terbaik untuk mengurangi sampah plastik?</h3>
+
+        <button class="option" onclick="jawab(this, false)">
+            A. Menggunakan kantong plastik sekali pakai setiap hari
+        </button>
+
+        <button class="option" onclick="jawab(this, true)">
+            B. Membawa tas belanja yang dapat digunakan kembali
+        </button>
+
+        <button class="option" onclick="jawab(this, false)">
+            C. Membuang sampah ke sungai
+        </button>
+
+        <p id="hasil" aria-live="polite"></p>
+        <button class="btn" onclick="ulang()">Ulangi Kuis</button>
+    </div>
+</section>
+
+<footer>
+    <p><strong>🌿 EcoCare — Peduli Lingkungan</strong></p>
+    <p>Bumi bukan warisan nenek moyang, melainkan titipan untuk generasi mendatang.</p>
+    <p>Website edukasi lingkungan | 2026</p>
+</footer>
+
+<script>
+function jawab(tombol, benar) {
+    const hasil = document.getElementById("hasil");
+    const semua = document.querySelectorAll(".option");
+
+    semua.forEach(btn => btn.disabled = true);
+
+    if (benar) {
+        hasil.textContent = "✅ Benar! Tas pakai ulang membantu mengurangi sampah plastik.";
+        hasil.style.color = "#167447";
+    } else {
+        hasil.textContent = "❌ Belum tepat. Coba pilih jawaban yang membantu mengurangi sampah.";
+        hasil.style.color = "#b93838";
+    }
+}
+
+function ulang() {
+    document.getElementById("hasil").textContent = "";
+    document.querySelectorAll(".option").forEach(btn => {
+        btn.disabled = false;
+    });
+}
+</script>
+
+</body>
+</html>
